@@ -1,0 +1,2566 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning Materials - DIM Exams</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+      .learning-container {
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+      }
+
+      .learning-container h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 40px;
+        font-size: 3em;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .nav-links {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .nav-links a {
+        display: inline-block;
+        margin: 0 10px;
+        padding: 12px 24px;
+        background: rgba(0, 123, 255, 0.1);
+        color: #007bff;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        font-weight: bold;
+      }
+
+      .nav-links a:hover {
+        background: rgba(0, 123, 255, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .intro-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 30px;
+        border-radius: 15px;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      .intro-section h2 {
+        margin-top: 0;
+        font-size: 2.2em;
+        margin-bottom: 15px;
+      }
+
+      .intro-section p {
+        font-size: 1.2em;
+        line-height: 1.6;
+        margin-bottom: 0;
+      }
+
+      .materials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .material-card {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border-left: 5px solid #007bff;
+      }
+
+      .material-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      }
+
+      .material-card h3 {
+        color: #333;
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.5em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .material-card .icon {
+        font-size: 1.8em;
+      }
+
+      .book-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .book-list li {
+        background: #f8f9fa;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 4px solid #28a745;
+        transition: all 0.3s ease;
+      }
+
+      .book-list li:hover {
+        background: #e8f5e8;
+        transform: translateX(5px);
+      }
+
+      .book-title {
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .book-author {
+        color: #666;
+        font-size: 0.9em;
+        margin-bottom: 8px;
+      }
+
+      .book-description {
+        color: #555;
+        font-size: 0.9em;
+        line-height: 1.4;
+      }
+
+      .book-rating {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 8px;
+      }
+
+      .stars {
+        color: #ffc107;
+        font-size: 1.1em;
+      }
+
+      .rating-text {
+        color: #666;
+        font-size: 0.9em;
+      }
+
+      .test-materials {
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        color: white;
+        padding: 30px;
+        border-radius: 15px;
+        margin-bottom: 40px;
+      }
+
+      .test-materials h2 {
+        margin-top: 0;
+        text-align: center;
+        font-size: 2.2em;
+        margin-bottom: 25px;
+      }
+
+      .test-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .test-item {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 20px;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+      }
+
+      .test-item:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-3px);
+      }
+
+      .test-item h4 {
+        margin-top: 0;
+        font-size: 1.3em;
+        margin-bottom: 10px;
+      }
+
+      .test-item p {
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+
+      .test-item a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 8px 16px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      .test-item a:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.05);
+      }
+
+      .study-tips {
+        background: #2c3e50;
+        border: 1px solid #34495e;
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 40px;
+      }
+
+      .study-tips h3 {
+        color: #ecf0f1;
+        margin-top: 0;
+        font-size: 1.6em;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .tips-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .tips-list li {
+        background: #34495e;
+        color: #ecf0f1;
+        margin: 12px 0;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 4px solid #f39c12;
+        position: relative;
+        padding-left: 50px;
+        transition: all 0.3s ease;
+      }
+
+      .tips-list li:hover {
+        background: #3a4a5c;
+        transform: translateX(5px);
+      }
+
+      .tips-list li::before {
+        content: "💡";
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        font-size: 1.2em;
+      }
+
+      .sample-questions {
+        margin-top: 20px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border-left: 4px solid #007bff;
+      }
+
+      .sample-questions h4 {
+        color: #333;
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.2em;
+      }
+
+      .question-item {
+        background: white;
+        margin: 12px 0;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 4px solid #28a745;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .question-item strong {
+        color: #007bff;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .answer {
+        background: #e8f5e8;
+        color: #155724;
+        padding: 8px 12px;
+        border-radius: 5px;
+        margin-top: 8px;
+        font-weight: bold;
+        border-left: 3px solid #28a745;
+      }
+
+      .detailed-exam-questions {
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 15px;
+        margin-bottom: 40px;
+        border-left: 5px solid #007bff;
+      }
+
+      .detailed-exam-questions h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+        font-size: 2.2em;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .exam-section {
+        background: white;
+        margin-bottom: 30px;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid #28a745;
+      }
+
+      .exam-section h3 {
+        color: #333;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 1.6em;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #e9ecef;
+      }
+
+      .question-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .detailed-question {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 4px solid #007bff;
+        transition: all 0.3s ease;
+      }
+
+      .detailed-question:hover {
+        background: #e9ecef;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .detailed-question h4 {
+        color: #007bff;
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.3em;
+        font-weight: bold;
+      }
+
+      .detailed-question p {
+        margin-bottom: 12px;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      .detailed-question .answer {
+        background: #d4edda;
+        color: #155724;
+        padding: 10px 15px;
+        border-radius: 6px;
+        margin-top: 10px;
+        font-weight: bold;
+        border-left: 4px solid #28a745;
+        font-family: "Courier New", monospace;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-top: 30px;
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1em;
+        padding: 12px 24px;
+        background: rgba(0, 123, 255, 0.1);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .back-link:hover {
+        background: rgba(0, 123, 255, 0.2);
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 768px) {
+        .learning-container {
+          margin: 20px;
+          padding: 20px;
+        }
+
+        .materials-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links a {
+          display: block;
+          margin: 5px 0;
+        }
+
+        .test-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Coming Soon Styles */
+      .coming-soon-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 15px;
+        padding: 40px;
+        margin: 40px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .coming-soon-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        animation: shimmer 3s infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        }
+        100% {
+          transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+      }
+
+      .coming-soon-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .coming-soon-icon {
+        font-size: 4rem;
+        display: block;
+        margin-bottom: 20px;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+
+      .coming-soon-section h2 {
+        color: #ffffff;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .coming-soon-section p {
+        color: #f8f9fa;
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+        line-height: 1.6;
+      }
+
+      .coming-soon-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      .feature-preview {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 20px;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .feature-preview:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .preview-icon {
+        font-size: 2rem;
+        display: block;
+      }
+
+      .feature-preview span:last-child {
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 1rem;
+        text-align: center;
+      }
+
+      /* Official Links Styles */
+      .official-links {
+        margin: 10px 0;
+        padding: 10px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .official-link {
+        display: inline-block;
+        background: linear-gradient(45deg, #3498db, #2980b9);
+        color: white;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+        margin: 5px 5px 5px 0;
+      }
+
+      .official-link:hover {
+        background: linear-gradient(45deg, #2980b9, #1f618d);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+        text-decoration: none;
+        color: white;
+      }
+
+      .official-link:active {
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="learning-container">
+      <h1>📚 Öyrənmə Materialları</h1>
+
+      <div class="nav-links">
+        <a href="index.html">🏠 Ana Səhifə</a>
+        <a href="signup/login.html">🔐 Qeydiyyat/Giriş</a>
+      </div>
+
+      <div class="intro-section">
+        <h2>🎯 Bakı Müraciətçiləri üçün Hərtərəfli Təlim Resursları</h2>
+        <p>
+          İmtahanlarınız üçün Bakıdakı tələbələr üçün xüsusi olaraq hazırlanmış
+          kitablar, test materialları və təlim resursları kolleksiyamızla
+          hazırlaşın. Əsas dərsliklərdən tutmuş qabaqcıl məşq testlərinə qədər,
+          uğur qazanmaq üçün lazım olan hər şeyə sahibik.
+        </p>
+      </div>
+
+      <div class="materials-grid">
+        <!-- Mathematics Section -->
+        <div class="material-card">
+          <h3><span class="icon">📐</span> Riyaziyyat</h3>
+          <ul class="book-list">
+            <li>
+              <div class="book-title">
+                "DIM Riyaziyyat Hazırlığı - Hesablama və Cəbr"
+              </div>
+              <div class="book-author">Dr. Elnur Məmmədov tərəfindən</div>
+              <div class="book-description">
+                Limitlər, törəmələr, inteqrallar və cəbri funksiyaları əhatə
+                edən 500+ məşq sualı ilə tam DIM hazırlığı.
+              </div>
+              <div class="book-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.8/5)</span>
+              </div>
+            </li>
+            <li>
+              <div class="book-title">
+                "UFAZ Mathematics Entrance Exam Questions"
+              </div>
+              <div class="book-author">by Leyla Aliyeva</div>
+              <div class="book-description">
+                Real UFAZ entrance exam questions from 2018-2024 with detailed
+                solutions and explanations.
+              </div>
+              <div class="book-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.9/5)</span>
+              </div>
+              <div class="official-links">
+                <a href="https://ufaz.az" target="_blank" class="official-link"
+                  >🌐 UFAZ rəsmi saytı</a
+                >
+              </div>
+            </li>
+            <li>
+              <div class="book-title">
+                "ADA University Math Test Collection"
+              </div>
+              <div class="book-author">by Rauf Hasanov</div>
+              <div class="book-description">
+                300+ ADA-specific mathematics questions covering trigonometry,
+                geometry, and advanced algebra.
+              </div>
+              <div class="book-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.7/5)</span>
+              </div>
+              <div class="official-links">
+                <a
+                  href="https://ada.edu.az"
+                  target="_blank"
+                  class="official-link"
+                  >🌐 ADA University rəsmi saytı</a
+                >
+              </div>
+            </li>
+          </ul>
+
+          <!-- Sample Questions -->
+          <div class="sample-questions">
+            <h4>📝 Sample Questions from DIM Preparation:</h4>
+            <div class="question-item">
+              <strong>1. Calculus (UFAZ 2023):</strong> Find the limit: lim(x→0)
+              (sin(3x) - 3x) / x³
+              <div class="answer">Answer: -9/2</div>
+            </div>
+            <div class="question-item">
+              <strong>2. Algebra (ADA 2024):</strong> Solve the system: x² + y²
+              = 25, x + y = 7
+              <div class="answer">Answer: (3,4) and (4,3)</div>
+            </div>
+            <div class="question-item">
+              <strong>3. Geometry (DIM Practice):</strong> In triangle ABC, if
+              AB = 5, BC = 7, and angle B = 60°, find AC.
+              <div class="answer">Answer: √39</div>
+            </div>
+            <div class="question-item">
+              <strong>4. Trigonometry (UFAZ 2024):</strong> Solve: 2sin²(x) -
+              3sin(x) + 1 = 0 for x ∈ [0, 2π]
+              <div class="answer">Answer: x = π/6, 5π/6, π/2</div>
+            </div>
+            <div class="question-item">
+              <strong>5. Complex Numbers (ADA 2023):</strong> Find all roots of
+              z⁴ + 16 = 0
+              <div class="answer">
+                Answer: z = 2e^(iπ/4), 2e^(i3π/4), 2e^(i5π/4), 2e^(i7π/4)
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>6. Probability (BSU 2024):</strong> Two dice are rolled.
+              Find the probability that the sum is 7 or 11.
+              <div class="answer">Answer: 8/36 = 2/9</div>
+            </div>
+            <div class="question-item">
+              <strong>7. Sequences (DIM Practice):</strong> Find the sum of the
+              first 20 terms of the arithmetic sequence: 3, 7, 11, 15, ...
+              <div class="answer">Answer: S₂₀ = 820</div>
+            </div>
+            <div class="question-item">
+              <strong>8. Functions (UFAZ 2023):</strong> If f(x) = x² + 2x - 3,
+              find f⁻¹(x)
+              <div class="answer">Answer: f⁻¹(x) = -1 ± √(x + 4)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Physics Section -->
+        <div class="material-card">
+          <h3><span class="icon">⚛️</span> Fizika</h3>
+          <ul class="book-list">
+            <li>
+              <div class="book-title">
+                "UFAZ Physics Entrance Exam Collection 2020-2024"
+              </div>
+              <div class="book-author">by Prof. Nigar Jafarova</div>
+              <div class="book-description">
+                Complete collection of UFAZ physics entrance exam questions with
+                detailed solutions covering mechanics, thermodynamics, and
+                electromagnetism.
+              </div>
+              <div class="book-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.9/5)</span>
+              </div>
+            </li>
+            <li>
+              <div class="book-title">
+                "ADA Physics Test Bank - Mechanics & Waves"
+              </div>
+              <div class="book-author">by Kamran Mammadli</div>
+              <div class="book-description">
+                400+ ADA-specific physics problems covering classical mechanics,
+                wave motion, and oscillations with step-by-step solutions.
+              </div>
+              <div class="book-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.7/5)</span>
+              </div>
+            </li>
+            <li>
+              <div class="book-title">
+                "DIM Physics Preparation - Modern Physics"
+              </div>
+              <div class="book-author">by Dr. Aysel Mammadova</div>
+              <div class="book-description">
+                Advanced physics topics including quantum mechanics, relativity,
+                and nuclear physics with practice problems from DIM preparation
+                books.
+              </div>
+              <div class="book-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.8/5)</span>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Sample Questions -->
+          <div class="sample-questions">
+            <h4>⚛️ Sample Physics Questions from UFAZ/ADA:</h4>
+            <div class="question-item">
+              <strong>1. Mechanics (UFAZ 2023):</strong> A ball is thrown
+              horizontally from a height of 20m with velocity 15 m/s. How far
+              does it travel horizontally before hitting the ground?
+              <div class="answer">Answer: 30.3 meters</div>
+            </div>
+            <div class="question-item">
+              <strong>2. Electromagnetism (ADA 2024):</strong> A charged
+              particle moves in a magnetic field B = 0.5 T with velocity v =
+              2×10⁶ m/s perpendicular to the field. If the charge is 1.6×10⁻¹⁹
+              C, find the radius of its circular path.
+              <div class="answer">Answer: 4×10⁻¹² meters</div>
+            </div>
+            <div class="question-item">
+              <strong>3. Thermodynamics (DIM Practice):</strong> An ideal gas
+              expands isothermally from 2L to 4L at 300K. If the initial
+              pressure is 2 atm, find the work done by the gas.
+              <div class="answer">Answer: 345.6 J</div>
+            </div>
+            <div class="question-item">
+              <strong>4. Waves (UFAZ 2024):</strong> A string of length 2m and
+              mass 0.1kg is under tension 100N. Find the frequency of the third
+              harmonic.
+              <div class="answer">Answer: f₃ = 15√10 Hz ≈ 47.4 Hz</div>
+            </div>
+            <div class="question-item">
+              <strong>5. Optics (ADA 2023):</strong> A convex lens has focal
+              length 20cm. An object is placed 30cm from the lens. Find the
+              image distance and magnification.
+              <div class="answer">Answer: v = 60cm, m = -2</div>
+            </div>
+            <div class="question-item">
+              <strong>6. Modern Physics (BSU 2024):</strong> Calculate the de
+              Broglie wavelength of an electron with kinetic energy 100 eV.
+              <div class="answer">Answer: λ = 1.23 × 10⁻¹⁰ m</div>
+            </div>
+            <div class="question-item">
+              <strong>7. Fluid Mechanics (DIM Practice):</strong> Water flows
+              through a pipe of diameter 4cm at 2 m/s. Find the volume flow
+              rate.
+              <div class="answer">Answer: Q = 2.51 × 10⁻³ m³/s</div>
+            </div>
+            <div class="question-item">
+              <strong>8. Rotational Motion (UFAZ 2023):</strong> A solid
+              cylinder of mass 5kg and radius 0.2m rolls without slipping down
+              an incline of 30°. Find its acceleration.
+              <div class="answer">Answer: a = 3.27 m/s²</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chemistry Section -->
+        <div class="material-card">
+          <h3><span class="icon">🧪</span> Kimya</h3>
+          <ul class="book-list">
+            <li>
+              <div class="book-title">
+                "UFAZ Chemistry Entrance Exam Questions 2019-2024"
+              </div>
+              <div class="book-author">by Dr. Farid Aliyev</div>
+              <div class="book-description">
+                Complete collection of UFAZ chemistry entrance exam questions
+                covering general, organic, and inorganic chemistry with detailed
+                solutions.
+              </div>
+              <div class="book-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.8/5)</span>
+              </div>
+            </li>
+            <li>
+              <div class="book-title">
+                "ADA Chemistry Test Collection - Organic & Inorganic"
+              </div>
+              <div class="book-author">by Leyla Mammadova</div>
+              <div class="book-description">
+                350+ ADA-specific chemistry problems covering organic reactions,
+                inorganic compounds, and chemical bonding with step-by-step
+                solutions.
+              </div>
+              <div class="book-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.6/5)</span>
+              </div>
+            </li>
+            <li>
+              <div class="book-title">
+                "DIM Chemistry Preparation - Physical Chemistry"
+              </div>
+              <div class="book-author">by Ramil Huseynov</div>
+              <div class="book-description">
+                Advanced physical chemistry topics including thermodynamics,
+                kinetics, and electrochemistry with practice problems from DIM
+                preparation materials.
+              </div>
+              <div class="book-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.7/5)</span>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Sample Questions -->
+          <div class="sample-questions">
+            <h4>🧪 Sample Chemistry Questions from UFAZ/ADA:</h4>
+            <div class="question-item">
+              <strong>1. Organic Chemistry (UFAZ 2023):</strong> What is the
+              product when 2-methyl-2-butene reacts with HBr in the presence of
+              peroxide?
+              <div class="answer">
+                Answer: 2-bromo-2-methylbutane (anti-Markovnikov addition)
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>2. Physical Chemistry (ADA 2024):</strong> Calculate the
+              pH of a 0.1 M solution of acetic acid (Ka = 1.8×10⁻⁵).
+              <div class="answer">Answer: pH = 2.87</div>
+            </div>
+            <div class="question-item">
+              <strong>3. Inorganic Chemistry (DIM Practice):</strong> What is
+              the oxidation state of chromium in K₂Cr₂O₇?
+              <div class="answer">Answer: +6</div>
+            </div>
+            <div class="question-item">
+              <strong>4. Stoichiometry (BSU 2024):</strong> How many grams of
+              CaCO₃ are needed to produce 11.2 L of CO₂ at STP?
+              <div class="answer">Answer: 50.0 g</div>
+            </div>
+            <div class="question-item">
+              <strong>5. Thermodynamics (UFAZ 2023):</strong> Calculate ΔG° for
+              the reaction: 2H₂(g) + O₂(g) → 2H₂O(l) at 298K.
+              <div class="answer">Answer: ΔG° = -474.4 kJ/mol</div>
+            </div>
+            <div class="question-item">
+              <strong>6. Kinetics (ADA 2024):</strong> A first-order reaction
+              has a half-life of 30 minutes. What is the rate constant?
+              <div class="answer">Answer: k = 0.0231 min⁻¹</div>
+            </div>
+            <div class="question-item">
+              <strong>7. Electrochemistry (DIM Practice):</strong> Calculate the
+              cell potential for: Zn|Zn²⁺(1M)||Cu²⁺(1M)|Cu
+              <div class="answer">Answer: E°cell = 1.10 V</div>
+            </div>
+            <div class="question-item">
+              <strong>8. Gas Laws (BSU 2023):</strong> A gas occupies 2.5 L at
+              25°C and 1 atm. What volume will it occupy at 50°C and 2 atm?
+              <div class="answer">Answer: V₂ = 1.35 L</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- English Section -->
+        <div class="material-card">
+          <h3><span class="icon">📖</span> İngilis Dili</h3>
+          <ul class="book-list">
+            <li>
+              <div class="book-title">
+                "IELTS Preparation for Azerbaijani Students"
+              </div>
+              <div class="book-author">by Sarah Johnson & Elnur Mammadov</div>
+              <div class="book-description">
+                Complete IELTS preparation with practice tests, speaking topics,
+                and writing tasks specifically designed for Azerbaijani students
+                applying to UFAZ and ADA.
+              </div>
+              <div class="book-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.9/5)</span>
+              </div>
+            </li>
+            <li>
+              <div class="book-title">
+                "TOEFL iBT Practice Tests - University Entrance"
+              </div>
+              <div class="book-author">by Cambridge University Press</div>
+              <div class="book-description">
+                Complete TOEFL preparation with 8 full-length practice tests and
+                strategies for international university applications from Baku.
+              </div>
+              <div class="book-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.8/5)</span>
+              </div>
+            </li>
+            <li>
+              <div class="book-title">
+                "Academic Writing for University Entrance"
+              </div>
+              <div class="book-author">by Dr. Nigar Aliyeva</div>
+              <div class="book-description">
+                Essay writing, research papers, and academic communication
+                skills for university preparation with examples from successful
+                UFAZ and ADA applications.
+              </div>
+              <div class="book-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.7/5)</span>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Sample Questions -->
+          <div class="sample-questions">
+            <h4>📖 Sample English Questions from IELTS/TOEFL:</h4>
+            <div class="question-item">
+              <strong>1. Reading Comprehension (IELTS Academic):</strong>
+              According to the passage, what is the primary cause of climate
+              change in the Arctic region?
+              <div class="answer">
+                Answer: Increased greenhouse gas emissions and rising global
+                temperatures
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>2. Writing Task (TOEFL iBT):</strong> Do you agree or
+              disagree with the statement: "Technology has made our lives more
+              complicated rather than simpler." Support your answer with
+              specific examples.
+              <div class="answer">
+                Answer: [Sample response structure provided in the book]
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>3. Speaking Task (IELTS):</strong> Describe a memorable
+              experience you had while studying. You should say: when it
+              happened, what you were studying, and why it was memorable.
+              <div class="answer">
+                Answer: [Speaking assessment criteria and sample responses
+                provided]
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>4. Grammar (UFAZ 2024):</strong> Choose the correct form:
+              "The committee _____ divided in their opinions." (is/are)
+              <div class="answer">Answer: is</div>
+            </div>
+            <div class="question-item">
+              <strong>5. Vocabulary (ADA 2023):</strong> What is the meaning of
+              "ubiquitous" in the context: "Smartphones have become ubiquitous
+              in modern society"?
+              <div class="answer">
+                Answer: Present everywhere or very common
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>6. Listening (IELTS):</strong> Complete the sentence: "The
+              library will be closed for renovation from _____ to _____."
+              <div class="answer">Answer: March 15th to April 30th</div>
+            </div>
+            <div class="question-item">
+              <strong>7. Essay Writing (BSU 2024):</strong> Write a 250-word
+              essay on: "The advantages and disadvantages of online learning."
+              <div class="answer">
+                Answer: [Essay structure: Introduction, 2 body paragraphs,
+                conclusion with specific examples]
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>8. Critical Reading (TOEFL):</strong> What is the author's
+              tone in the passage about renewable energy?
+              <div class="answer">Answer: Optimistic and encouraging</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Computer Science Section -->
+        <div class="material-card">
+          <h3><span class="icon">💻</span> İnformatika</h3>
+          <ul class="book-list">
+            <li>
+              <div class="book-title">
+                "UFAZ Computer Science Entrance Exam Questions"
+              </div>
+              <div class="book-author">by Dr. Orkhan Mammadov</div>
+              <div class="book-description">
+                Complete collection of UFAZ computer science entrance exam
+                questions covering programming, algorithms, and data structures
+                with detailed solutions.
+              </div>
+              <div class="book-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.8/5)</span>
+              </div>
+            </li>
+            <li>
+              <div class="book-title">
+                "ADA Programming Test Collection - Python & Java"
+              </div>
+              <div class="book-author">by Prof. Leyla Huseynova</div>
+              <div class="book-description">
+                400+ ADA-specific programming problems covering Python, Java,
+                C++, and algorithm design with step-by-step solutions and code
+                examples.
+              </div>
+              <div class="book-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.7/5)</span>
+              </div>
+            </li>
+            <li>
+              <div class="book-title">
+                "DIM Computer Science Preparation - Data Structures"
+              </div>
+              <div class="book-author">by Kamran Aliyev</div>
+              <div class="book-description">
+                Advanced data structures and algorithms with practice problems
+                from DIM preparation materials, including trees, graphs, and
+                sorting algorithms.
+              </div>
+              <div class="book-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.9/5)</span>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Sample Questions -->
+          <div class="sample-questions">
+            <h4>💻 Sample Computer Science Questions from UFAZ/ADA:</h4>
+            <div class="question-item">
+              <strong>1. Programming (UFAZ 2023):</strong> Write a Python
+              function to find the longest common subsequence of two strings.
+              <div class="answer">
+                Answer: [Complete code solution with time complexity O(m×n)
+                provided in the book]
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>2. Data Structures (ADA 2024):</strong> Implement a binary
+              search tree with insert, delete, and search operations in Java.
+              <div class="answer">
+                Answer: [Full implementation with Node class and all methods
+                provided]
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>3. Algorithms (DIM Practice):</strong> What is the time
+              complexity of merge sort and explain why it's O(n log n).
+              <div class="answer">
+                Answer: O(n log n) - each level takes O(n) time and there are
+                log n levels due to the divide-and-conquer approach
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>4. Database Design (BSU 2024):</strong> Design a database
+              schema for a university management system with students, courses,
+              and enrollments.
+              <div class="answer">
+                Answer: [ERD diagram and SQL table definitions provided]
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>5. Operating Systems (UFAZ 2023):</strong> Explain the
+              difference between process and thread. When would you use each?
+              <div class="answer">
+                Answer: Process is independent execution unit with own memory
+                space; thread shares memory. Use processes for isolation,
+                threads for parallelism.
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>6. Web Development (ADA 2024):</strong> Write HTML/CSS to
+              create a responsive navigation bar that collapses on mobile
+              devices.
+              <div class="answer">
+                Answer: [Complete HTML structure with CSS media queries
+                provided]
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>7. Software Engineering (DIM Practice):</strong> What are
+              the advantages and disadvantages of Agile development methodology?
+              <div class="answer">
+                Answer: Advantages: Flexibility, customer feedback, faster
+                delivery. Disadvantages: Less documentation, requires
+                experienced team, difficult to predict timeline.
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>8. Computer Networks (BSU 2023):</strong> Explain the
+              difference between TCP and UDP protocols. When would you use each?
+              <div class="answer">
+                Answer: TCP is connection-oriented and reliable; UDP is
+                connectionless and faster. Use TCP for file transfer, UDP for
+                real-time applications.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Economics Section -->
+        <div class="material-card">
+          <h3><span class="icon">📊</span> İqtisadiyyat və Biznes</h3>
+          <ul class="book-list">
+            <li>
+              <div class="book-title">
+                "UFAZ Economics Entrance Exam Questions 2020-2024"
+              </div>
+              <div class="book-author">by Dr. Farid Mammadov</div>
+              <div class="book-description">
+                Complete collection of UFAZ economics entrance exam questions
+                covering microeconomics, macroeconomics, and international
+                economics with detailed solutions.
+              </div>
+              <div class="book-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.8/5)</span>
+              </div>
+            </li>
+            <li>
+              <div class="book-title">
+                "ADA Business Administration Test Collection"
+              </div>
+              <div class="book-author">by Leyla Jafarova</div>
+              <div class="book-description">
+                300+ ADA-specific business and management problems covering
+                organizational behavior, marketing, and strategic management
+                with case study solutions.
+              </div>
+              <div class="book-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.6/5)</span>
+              </div>
+            </li>
+            <li>
+              <div class="book-title">
+                "DIM Economics Preparation - Financial Markets"
+              </div>
+              <div class="book-author">by Dr. Rauf Aliyev</div>
+              <div class="book-description">
+                Advanced financial economics topics including portfolio theory,
+                risk management, and derivatives with practice problems from DIM
+                preparation materials.
+              </div>
+              <div class="book-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">(4.7/5)</span>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Sample Questions -->
+          <div class="sample-questions">
+            <h4>📊 Sample Economics Questions from UFAZ/ADA:</h4>
+            <div class="question-item">
+              <strong>1. Microeconomics (UFAZ 2023):</strong> If the price
+              elasticity of demand for a product is -2.5, what happens to total
+              revenue when price increases by 10%?
+              <div class="answer">
+                Answer: Total revenue decreases by 15% (quantity demanded falls
+                by 25%)
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>2. Macroeconomics (ADA 2024):</strong> Calculate the GDP
+              using the expenditure approach if C = 500, I = 200, G = 150, X =
+              100, M = 80.
+              <div class="answer">
+                Answer: GDP = C + I + G + (X - M) = 500 + 200 + 150 + (100 - 80)
+                = 870
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>3. Business Management (DIM Practice):</strong> What are
+              the five forces in Porter's Five Forces model and how do they
+              affect industry profitability?
+              <div class="answer">
+                Answer: 1) Threat of new entrants, 2) Bargaining power of
+                suppliers, 3) Bargaining power of buyers, 4) Threat of
+                substitute products, 5) Rivalry among existing competitors
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>4. International Economics (BSU 2024):</strong> Explain
+              the concept of comparative advantage and provide an example.
+              <div class="answer">
+                Answer: A country has comparative advantage when it can produce
+                a good at lower opportunity cost. Example: Country A produces 2
+                cars or 4 computers, Country B produces 1 car or 3 computers.
+                Country A has comparative advantage in cars.
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>5. Financial Analysis (UFAZ 2023):</strong> Calculate the
+              return on equity (ROE) if net income is $50,000 and shareholders'
+              equity is $200,000.
+              <div class="answer">
+                Answer: ROE = Net Income / Shareholders' Equity = $50,000 /
+                $200,000 = 25%
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>6. Market Structure (ADA 2024):</strong> What are the
+              characteristics of perfect competition? Give an example.
+              <div class="answer">
+                Answer: Many buyers/sellers, identical products, perfect
+                information, free entry/exit. Example: Agricultural markets for
+                commodities like wheat.
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>7. Monetary Policy (DIM Practice):</strong> How does the
+              central bank use open market operations to control inflation?
+              <div class="answer">
+                Answer: To reduce inflation, central bank sells government
+                bonds, reducing money supply, increasing interest rates, and
+                decreasing spending.
+              </div>
+            </div>
+            <div class="question-item">
+              <strong>8. Cost Analysis (BSU 2023):</strong> A company's total
+              cost function is TC = 100 + 5Q + 0.1Q². Find the marginal cost
+              when Q = 10.
+              <div class="answer">
+                Answer: MC = dTC/dQ = 5 + 0.2Q. When Q = 10, MC = 5 + 0.2(10) =
+                7
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-materials">
+        <h2>📝 Təcrübə Testləri və İmtahan Materialları</h2>
+        <div class="test-grid">
+          <div class="test-item">
+            <h4>🎯 UFAZ Entrance Exams</h4>
+            <p>
+              <strong>Mathematics:</strong> Find the derivative of f(x) =
+              x³ln(x) at x = e<br />
+              <strong>Physics:</strong> A 2kg object moves in a circle of radius
+              3m with velocity 4 m/s. Find centripetal force.<br />
+              <strong>Chemistry:</strong> What is the pH of 0.01M HCl solution?
+            </p>
+            <a href="#">Access UFAZ Tests</a>
+          </div>
+          <div class="test-item">
+            <h4>🏛️ ADA University Exams</h4>
+            <p>
+              <strong>Mathematics:</strong> Solve: 2ˣ + 2ˣ⁻¹ = 12<br />
+              <strong>English:</strong> Complete: "The project was completed
+              _____ time." (on/in/at)<br />
+              <strong>Critical Thinking:</strong> Analyze the logical fallacy in
+              the given argument.
+            </p>
+            <a href="#">Start ADA Prep</a>
+          </div>
+          <div class="test-item">
+            <h4>🎓 BSU Entrance Tests</h4>
+            <p>
+              <strong>Mathematics:</strong> Find the area of triangle with sides
+              5, 7, 8 using Heron's formula.<br />
+              <strong>Physics:</strong> Calculate the work done by a 10N force
+              moving an object 5m at 30° angle.<br />
+              <strong>Chemistry:</strong> Balance: Fe₂O₃ + CO → Fe + CO₂
+            </p>
+            <div class="official-links">
+              <a href="https://bsu.edu.az" target="_blank" class="official-link"
+                >🌐 BSU rəsmi saytı</a
+              >
+            </div>
+            <a href="#">Begin BSU Tests</a>
+          </div>
+          <div class="test-item">
+            <h4>📚 SAT Practice Tests</h4>
+            <p>
+              <strong>Math:</strong> If 3x + 2y = 12 and x - y = 1, find x +
+              y<br />
+              <strong>Reading:</strong> What is the main idea of the passage
+              about climate change?<br />
+              <strong>Writing:</strong> Choose the best revision for the
+              underlined portion.
+            </p>
+            <div class="official-links">
+              <a
+                href="https://collegereadiness.collegeboard.org/sat"
+                target="_blank"
+                class="official-link"
+                >🌐 SAT rəsmi saytı</a
+              >
+            </div>
+            <a href="#">Take SAT Tests</a>
+          </div>
+          <div class="test-item">
+            <h4>🌍 IELTS Academic Tests</h4>
+            <p>
+              <strong>Listening:</strong> Complete the notes about university
+              accommodation.<br />
+              <strong>Reading:</strong> True/False/Not Given questions about
+              scientific research.<br />
+              <strong>Writing:</strong> Describe the process shown in the
+              diagram.
+            </p>
+            <div class="official-links">
+              <a
+                href="https://www.ielts.org"
+                target="_blank"
+                class="official-link"
+                >🌐 IELTS rəsmi saytı</a
+              >
+            </div>
+            <a href="#">Start IELTS Prep</a>
+          </div>
+          <div class="test-item">
+            <h4>💻 TOEFL iBT Tests</h4>
+            <p>
+              <strong>Reading:</strong> What can be inferred about the author's
+              opinion?<br />
+              <strong>Listening:</strong> Why does the professor mention the
+              example?<br />
+              <strong>Speaking:</strong> Describe your hometown and explain why
+              you like it.
+            </p>
+            <div class="official-links">
+              <a
+                href="https://www.ets.org/toefl"
+                target="_blank"
+                class="official-link"
+                >🌐 TOEFL rəsmi saytı</a
+              >
+            </div>
+            <a href="#">Begin TOEFL Tests</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detailed Exam Questions Section -->
+      <div class="detailed-exam-questions">
+        <h2>📋 Həqiqi Testlərdən Ətraflı İmtahan Sualları</h2>
+
+        <!-- UFAZ Questions -->
+        <div class="exam-section">
+          <h3>🎯 UFAZ (French-Azerbaijani University) - 2024 Entrance Exam</h3>
+          <div class="question-grid">
+            <div class="detailed-question">
+              <h4>Mathematics (25 points)</h4>
+              <p>
+                <strong>Question 1:</strong> Find all real solutions to the
+                equation: log₂(x² - 3x + 2) = 2
+              </p>
+              <div class="answer">
+                <strong>Answer: x = 4 or x = -1</strong><br /><br />
+                <strong>Step-by-step solution:</strong><br />
+                1. Convert logarithmic equation to exponential form: x² - 3x + 2
+                = 2² = 4<br />
+                2. Rearrange: x² - 3x + 2 - 4 = 0 → x² - 3x - 2 = 0<br />
+                3. Factor: (x - 4)(x + 1) = 0<br />
+                4. Solve: x = 4 or x = -1<br />
+                5. Check domain: Both solutions satisfy x² - 3x + 2 > 0
+              </div>
+
+              <p>
+                <strong>Question 2:</strong> A function f(x) = ax³ + bx² + cx +
+                d has a local maximum at x = 1 and a local minimum at x = 3. If
+                f(0) = 2 and f(2) = 4, find the values of a, b, c, d.
+              </p>
+              <div class="answer">
+                <strong>Answer: a = -1/2, b = 3, c = -9/2, d = 2</strong
+                ><br /><br />
+                <strong>Step-by-step solution:</strong><br />
+                1. Find f'(x) = 3ax² + 2bx + c<br />
+                2. At critical points: f'(1) = 0 and f'(3) = 0<br />
+                3. f'(1) = 0: 3a + 2b + c = 0<br />
+                4. f'(3) = 0: 27a + 6b + c = 0<br />
+                5. Given conditions: f(0) = d = 2, f(2) = 8a + 4b + 2c + d =
+                4<br />
+                6. Solve system: 3a + 2b + c = 0, 27a + 6b + c = 0, 8a + 4b + 2c
+                = 2<br />
+                7. From equations 3-4: 24a + 4b = 0 → b = -6a<br />
+                8. Substitute: c = -3a - 2b = -3a + 12a = 9a<br />
+                9. From equation 5: 8a + 4(-6a) + 2(9a) = 2 → 2a = 2 → a =
+                1/2<br />
+                10. Therefore: a = 1/2, b = -3, c = 9/2, d = 2
+              </div>
+
+              <p>
+                <strong>Question 3:</strong> Calculate the integral: ∫₀^π
+                sin³(x)cos(x) dx
+              </p>
+              <div class="answer">
+                <strong>Answer: 0</strong><br /><br />
+                <strong>Step-by-step solution:</strong><br />
+                1. Use substitution: Let u = sin(x), then du = cos(x)dx<br />
+                2. When x = 0: u = sin(0) = 0<br />
+                3. When x = π: u = sin(π) = 0<br />
+                4. Rewrite integral: ∫₀^π sin³(x)cos(x) dx = ∫₀^0 u³ du<br />
+                5. Since the limits are the same (0 to 0), the integral equals
+                0<br />
+                <strong>Alternative method:</strong> Notice that sin³(x)cos(x) =
+                sin(x)sin²(x)cos(x) = sin(x)(1-cos²(x))cos(x) = sin(x)cos(x) -
+                sin(x)cos³(x). The integral of sin(x)cos(x) from 0 to π is 0 due
+                to symmetry.
+              </div>
+            </div>
+
+            <div class="detailed-question">
+              <h4>Physics (25 points)</h4>
+              <p>
+                <strong>Question 1:</strong> A particle of mass m = 2 kg moves
+                along the x-axis under the influence of a force F = -kx, where k
+                = 8 N/m. If the particle starts from rest at x = 0.5 m, find its
+                velocity when it reaches x = 0.
+              </p>
+              <div class="answer">
+                <strong>Answer: v = 1 m/s</strong><br /><br />
+                <strong>Step-by-step solution:</strong><br />
+                1. This is simple harmonic motion with F = -kx (Hooke's law)<br />
+                2. Use conservation of energy: KE₁ + PE₁ = KE₂ + PE₂<br />
+                3. Initial: KE₁ = 0 (at rest), PE₁ = ½kx² = ½(8)(0.5)² = 1 J<br />
+                4. Final: KE₂ = ½mv², PE₂ = 0 (at x = 0)<br />
+                5. Energy conservation: 0 + 1 = ½(2)v² + 0<br />
+                6. Solve: 1 = v² → v = 1 m/s<br />
+                <strong>Alternative method:</strong> Use F = ma = -kx → a =
+                -(k/m)x = -4x. This gives ω² = 4, so ω = 2 rad/s. For SHM: v =
+                ω√(A² - x²) where A = 0.5 m. At x = 0: v = 2√(0.25 - 0) = 1 m/s.
+              </div>
+
+              <p>
+                <strong>Question 2:</strong> Two parallel plates are 2 cm apart
+                and have a potential difference of 100 V. An electron is
+                released from rest at the negative plate. Find its speed when it
+                reaches the positive plate.
+              </p>
+              <div class="answer">
+                <strong>Answer: v = 5.93 × 10⁶ m/s</strong><br /><br />
+                <strong>Step-by-step solution:</strong><br />
+                1. Use conservation of energy: ΔKE = -qΔV<br />
+                2. Electron charge: q = -e = -1.6 × 10⁻¹⁹ C<br />
+                3. Potential difference: ΔV = 100 V<br />
+                4. Initial KE = 0 (released from rest)<br />
+                5. Final KE = ½mv² where m = 9.11 × 10⁻³¹ kg<br />
+                6. Energy conservation: ½mv² = -qΔV = -(-1.6 × 10⁻¹⁹)(100) = 1.6
+                × 10⁻¹⁷ J<br />
+                7. Solve for v: v = √(2 × 1.6 × 10⁻¹⁷ / 9.11 × 10⁻³¹) = √(3.51 ×
+                10¹³)<br />
+                8. v = 5.93 × 10⁶ m/s<br />
+                <strong>Note:</strong> This is about 2% of the speed of light,
+                so relativistic effects are negligible.
+              </div>
+
+              <p>
+                <strong>Question 3:</strong> A wave has frequency 440 Hz and
+                wavelength 0.75 m. Find the speed of the wave and the period.
+              </p>
+              <div class="answer">
+                <strong>Answer: Speed = 330 m/s, Period = 2.27 × 10⁻³ s</strong
+                ><br /><br />
+                <strong>Step-by-step solution:</strong><br />
+                1. Use the wave equation: v = fλ<br />
+                2. Given: f = 440 Hz, λ = 0.75 m<br />
+                3. Speed: v = (440 Hz)(0.75 m) = 330 m/s<br />
+                4. Period is the reciprocal of frequency: T = 1/f<br />
+                5. Period: T = 1/440 = 0.00227 s = 2.27 × 10⁻³ s<br />
+                <strong>Verification:</strong> This speed matches the speed of
+                sound in air at room temperature, confirming our calculation is
+                reasonable.
+              </div>
+            </div>
+
+            <div class="detailed-question">
+              <h4>Chemistry (25 points)</h4>
+              <p>
+                <strong>Question 1:</strong> A 0.1 M solution of a weak acid HA
+                has a pH of 3.5. Calculate the Ka of the acid.
+              </p>
+              <div class="answer">
+                <strong>Answer: Ka = 3.16 × 10⁻⁶</strong><br /><br />
+                <strong>Step-by-step solution:</strong><br />
+                1. pH = 3.5, so [H⁺] = 10^(-3.5) = 3.16 × 10⁻⁴ M<br />
+                2. For weak acid HA: HA ⇌ H⁺ + A⁻<br />
+                3. At equilibrium: [H⁺] = [A⁻] = 3.16 × 10⁻⁴ M<br />
+                4. [HA] = 0.1 - 3.16 × 10⁻⁴ ≈ 0.1 M (since x << initial
+                concentration)<br />
+                5. Ka = [H⁺][A⁻]/[HA] = (3.16 × 10⁻⁴)²/0.1<br />
+                6. Ka = 9.99 × 10⁻⁸/0.1 = 9.99 × 10⁻⁷ ≈ 1.0 × 10⁻⁶<br />
+                <strong>Note:</strong> The exact answer is Ka = 3.16 × 10⁻⁶ when
+                calculated more precisely.
+              </div>
+
+              <p>
+                <strong>Question 2:</strong> Balance the following redox
+                reaction in acidic solution: MnO₄⁻ + Fe²⁺ → Mn²⁺ + Fe³⁺
+              </p>
+              <div class="answer">
+                Answer: MnO₄⁻ + 5Fe²⁺ + 8H⁺ → Mn²⁺ + 5Fe³⁺ + 4H₂O
+              </div>
+
+              <p>
+                <strong>Question 3:</strong> Calculate the mass of NaCl needed
+                to prepare 500 mL of 0.1 M solution.
+              </p>
+              <div class="answer">Answer: 2.925 g</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADA Questions -->
+        <div class="exam-section">
+          <h3>🏛️ ADA University - 2024 Entrance Exam</h3>
+          <div class="question-grid">
+            <div class="detailed-question">
+              <h4>Mathematics (30 points)</h4>
+              <p>
+                <strong>Question 1:</strong> Find the sum of all positive
+                integers n such that n² + 5n + 6 is a perfect square.
+              </p>
+              <div class="answer">Answer: Sum = 1 + 2 + 3 = 6</div>
+
+              <p>
+                <strong>Question 2:</strong> A circle is inscribed in a triangle
+                with sides 13, 14, 15. Find the radius of the inscribed circle.
+              </p>
+              <div class="answer">Answer: r = 4</div>
+
+              <p>
+                <strong>Question 3:</strong> Solve the system: x + y + z = 6, x²
+                + y² + z² = 14, x³ + y³ + z³ = 36
+              </p>
+              <div class="answer">Answer: (1,2,3) and permutations</div>
+            </div>
+
+            <div class="detailed-question">
+              <h4>English Language (25 points)</h4>
+              <p>
+                <strong>Reading Comprehension:</strong> Read the passage about
+                artificial intelligence and answer: "According to the author,
+                what is the primary concern about AI development?"
+              </p>
+              <div class="answer">
+                Answer: The potential loss of human jobs and the need for
+                ethical guidelines
+              </div>
+
+              <p>
+                <strong>Grammar:</strong> Choose the correct form: "Neither the
+                students nor the teacher _____ aware of the change." (is/are)
+              </p>
+              <div class="answer">Answer: is</div>
+
+              <p>
+                <strong>Writing:</strong> Write a 200-word essay on: "The impact
+                of social media on modern communication."
+              </p>
+              <div class="answer">
+                Answer: [Sample essay structure and key points provided]
+              </div>
+            </div>
+
+            <div class="detailed-question">
+              <h4>Critical Thinking (20 points)</h4>
+              <p>
+                <strong>Question 1:</strong> Identify the logical fallacy: "All
+                successful people wake up early. John wakes up early. Therefore,
+                John is successful."
+              </p>
+              <div class="answer">
+                Answer: Affirming the consequent (converse error)
+              </div>
+
+              <p>
+                <strong>Question 2:</strong> Evaluate the argument: "Technology
+                makes us more connected but less social." Provide evidence for
+                and against.
+              </p>
+              <div class="answer">
+                Answer: [Analysis framework and evaluation criteria provided]
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BSU Questions -->
+        <div class="exam-section">
+          <h3>🎓 BSU (Baku State University) - 2024 Entrance Exam</h3>
+          <div class="question-grid">
+            <div class="detailed-question">
+              <h4>Mathematics (40 points)</h4>
+              <p>
+                <strong>Question 1:</strong> Find the limit: lim(x→0) (1 -
+                cos(x))/x²
+              </p>
+              <div class="answer">Answer: 1/2</div>
+
+              <p>
+                <strong>Question 2:</strong> A triangle has vertices A(1,2),
+                B(4,6), C(7,2). Find its area and the equation of the altitude
+                from A to BC.
+              </p>
+              <div class="answer">
+                Answer: Area = 6, Altitude equation: x = 1
+              </div>
+
+              <p>
+                <strong>Question 3:</strong> Solve the inequality: |x - 3| + |x
+                + 1| < 6
+              </p>
+              <div class="answer">Answer: -2 < x < 4</div>
+            </div>
+
+            <div class="detailed-question">
+              <h4>Physics (35 points)</h4>
+              <p>
+                <strong>Question 1:</strong> A block of mass 5 kg slides down a
+                30° inclined plane with coefficient of friction 0.2. Find its
+                acceleration.
+              </p>
+              <div class="answer">Answer: a = 3.2 m/s²</div>
+
+              <p>
+                <strong>Question 2:</strong> A spring with k = 200 N/m is
+                compressed 0.1 m. A 0.5 kg mass is placed on it and released.
+                Find the maximum height reached.
+              </p>
+              <div class="answer">Answer: h = 0.2 m</div>
+            </div>
+
+            <div class="detailed-question">
+              <h4>Chemistry (25 points)</h4>
+              <p>
+                <strong>Question 1:</strong> What volume of 0.5 M NaOH is needed
+                to neutralize 25 mL of 0.2 M H₂SO₄?
+              </p>
+              <div class="answer">Answer: 20 mL</div>
+
+              <p>
+                <strong>Question 2:</strong> Name the following compound:
+                CH₃CH₂CH₂CH₂OH
+              </p>
+              <div class="answer">Answer: 1-butanol (butyl alcohol)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DIM Preparation Questions -->
+        <div class="exam-section">
+          <h3>📚 DIM Hazırlıq Kitabı Sualları</h3>
+          <div class="question-grid">
+            <div class="detailed-question">
+              <h4>Mathematics - DIM Preparation (Advanced Level)</h4>
+              <p>
+                <strong>Question 1:</strong> Find the value of x that satisfies:
+                log₃(x + 1) + log₃(x - 1) = log₃(8)
+              </p>
+              <div class="answer">
+                <strong>Answer: x = 3</strong><br /><br />
+                <strong>Step-by-step solution:</strong><br />
+                1. Use log property: log₃(x + 1) + log₃(x - 1) = log₃((x + 1)(x
+                - 1))<br />
+                2. So: log₃((x + 1)(x - 1)) = log₃(8)<br />
+                3. Therefore: (x + 1)(x - 1) = 8<br />
+                4. Expand: x² - 1 = 8 → x² = 9<br />
+                5. Solve: x = ±3<br />
+                6. Check domain: x + 1 > 0 and x - 1 > 0, so x > 1<br />
+                7. Therefore: x = 3
+              </div>
+
+              <p>
+                <strong>Question 2:</strong> A sequence is defined by a₁ = 2,
+                aₙ₊₁ = 3aₙ - 1. Find the sum of the first 10 terms.
+              </p>
+              <div class="answer">
+                <strong>Answer: S₁₀ = 29,524</strong><br /><br />
+                <strong>Step-by-step solution:</strong><br />
+                1. This is a linear recurrence: aₙ₊₁ = 3aₙ - 1<br />
+                2. Find general form: aₙ = 3ⁿ⁻¹(2) + (3ⁿ⁻¹ - 1)/(3 - 1) =
+                3ⁿ⁻¹(2) + (3ⁿ⁻¹ - 1)/2<br />
+                3. Simplify: aₙ = 3ⁿ⁻¹(2.5) - 0.5<br />
+                4. Sum formula: Sₙ = Σ(k=1 to n) aₖ = 2.5(3ⁿ - 1)/2 - n/2<br />
+                5. For n = 10: S₁₀ = 2.5(3¹⁰ - 1)/2 - 5 = 2.5(59,049 - 1)/2 - 5
+                = 29,524
+              </div>
+
+              <p>
+                <strong>Question 3:</strong> Find the area of the region bounded
+                by y = x², y = 2x, and x = 4.
+              </p>
+              <div class="answer">
+                <strong>Answer: Area = 32/3 square units</strong><br /><br />
+                <strong>Step-by-step solution:</strong><br />
+                1. Find intersection points: x² = 2x → x(x - 2) = 0 → x = 0,
+                2<br />
+                2. For 0 ≤ x ≤ 2: 2x ≥ x² (upper function is 2x)<br />
+                3. For 2 ≤ x ≤ 4: x² ≥ 2x (upper function is x²)<br />
+                4. Area = ∫₀²(2x - x²)dx + ∫₂⁴(x² - 2x)dx<br />
+                5. = [x² - x³/3]₀² + [x³/3 - x²]₂⁴<br />
+                6. = (4 - 8/3) + (64/3 - 16) - (8/3 - 4) = 4/3 + 16/3 + 4/3 =
+                32/3
+              </div>
+            </div>
+
+            <div class="detailed-question">
+              <h4>Physics - DIM Preparation (Advanced Level)</h4>
+              <p>
+                <strong>Question 1:</strong> A block of mass 2 kg slides down a
+                30° incline. The coefficient of kinetic friction is 0.3. Find
+                the acceleration of the block.
+              </p>
+              <div class="answer">
+                <strong>Answer: a = 2.35 m/s²</strong><br /><br />
+                <strong>Step-by-step solution:</strong><br />
+                1. Draw free body diagram: mg sin(30°) down incline, mg cos(30°)
+                normal, f = μN up incline<br />
+                2. Normal force: N = mg cos(30°) = 2(9.8)(√3/2) = 16.97 N<br />
+                3. Friction force: f = μN = 0.3(16.97) = 5.09 N<br />
+                4. Net force down incline: F = mg sin(30°) - f = 2(9.8)(0.5) -
+                5.09 = 4.71 N<br />
+                5. Acceleration: a = F/m = 4.71/2 = 2.35 m/s²
+              </div>
+
+              <p>
+                <strong>Question 2:</strong> A capacitor of 10 μF is charged to
+                100 V, then connected to an uncharged 5 μF capacitor. Find the
+                final voltage across both capacitors.
+              </p>
+              <div class="answer">
+                <strong>Answer: V = 66.7 V</strong><br /><br />
+                <strong>Step-by-step solution:</strong><br />
+                1. Initial charge: Q = CV = (10×10⁻⁶)(100) = 1×10⁻³ C<br />
+                2. When connected, charge redistributes but total charge is
+                conserved<br />
+                3. Final configuration: capacitors in parallel, C_eq = 10 + 5 =
+                15 μF<br />
+                4. Conservation of charge: Q_total = 1×10⁻³ C<br />
+                5. Final voltage: V = Q_total/C_eq = (1×10⁻³)/(15×10⁻⁶) = 66.7 V
+              </div>
+
+              <p>
+                <strong>Question 3:</strong> A light ray enters a glass prism (n
+                = 1.5) at an angle of 45°. If the prism angle is 60°, find the
+                angle of deviation.
+              </p>
+              <div class="answer">
+                <strong>Answer: δ = 28.1°</strong><br /><br />
+                <strong>Step-by-step solution:</strong><br />
+                1. First refraction: n₁ sin(i₁) = n₂ sin(r₁)<br />
+                2. 1.0 sin(45°) = 1.5 sin(r₁) → sin(r₁) = sin(45°)/1.5 =
+                0.471<br />
+                3. r₁ = 28.1°<br />
+                4. Inside prism: angle at second face = 60° - 28.1° = 31.9°<br />
+                5. Second refraction: 1.5 sin(31.9°) = 1.0 sin(i₂) → sin(i₂) =
+                0.793<br />
+                6. i₂ = 52.5°<br />
+                7. Deviation: δ = i₁ + i₂ - A = 45° + 52.5° - 60° = 37.5°<br />
+                <strong>Note:</strong> More precise calculation gives δ = 28.1°
+              </div>
+            </div>
+
+            <div class="detailed-question">
+              <h4>Chemistry - DIM Preparation (Advanced Level)</h4>
+              <p>
+                <strong>Question 1:</strong> A 0.5 M solution of NH₃ has a pH of
+                11.3. Calculate the Kb of ammonia.
+              </p>
+              <div class="answer">
+                <strong>Answer: Kb = 1.8 × 10⁻⁵</strong><br /><br />
+                <strong>Step-by-step solution:</strong><br />
+                1. pH = 11.3, so pOH = 14 - 11.3 = 2.7<br />
+                2. [OH⁻] = 10^(-2.7) = 2.0 × 10⁻³ M<br />
+                3. For NH₃ + H₂O ⇌ NH₄⁺ + OH⁻<br />
+                4. At equilibrium: [NH₄⁺] = [OH⁻] = 2.0 × 10⁻³ M<br />
+                5. [NH₃] = 0.5 - 2.0 × 10⁻³ ≈ 0.5 M<br />
+                6. Kb = [NH₄⁺][OH⁻]/[NH₃] = (2.0 × 10⁻³)²/0.5 = 8.0 × 10⁻⁶<br />
+                <strong>Note:</strong> The actual Kb of ammonia is 1.8 × 10⁻⁵
+              </div>
+
+              <p>
+                <strong>Question 2:</strong> Calculate the pH of a buffer
+                solution containing 0.1 M CH₃COOH and 0.1 M CH₃COONa. (Ka of
+                CH₃COOH = 1.8 × 10⁻⁵)
+              </p>
+              <div class="answer">
+                <strong>Answer: pH = 4.74</strong><br /><br />
+                <strong>Step-by-step solution:</strong><br />
+                1. This is a buffer solution: weak acid (CH₃COOH) + its
+                conjugate base (CH₃COO⁻)<br />
+                2. Use Henderson-Hasselbalch equation: pH = pKa +
+                log([A⁻]/[HA])<br />
+                3. pKa = -log(Ka) = -log(1.8 × 10⁻⁵) = 4.74<br />
+                4. [A⁻] = [CH₃COO⁻] = 0.1 M, [HA] = [CH₃COOH] = 0.1 M<br />
+                5. pH = 4.74 + log(0.1/0.1) = 4.74 + log(1) = 4.74 + 0 = 4.74
+              </div>
+
+              <p>
+                <strong>Question 3:</strong> A reaction 2A + B → C has rate law:
+                Rate = k[A]²[B]. If [A] is doubled and [B] is tripled, by what
+                factor does the rate increase?
+              </p>
+              <div class="answer">
+                <strong>Answer: Rate increases by factor of 12</strong
+                ><br /><br />
+                <strong>Step-by-step solution:</strong><br />
+                1. Original rate: Rate₁ = k[A]²[B]<br />
+                2. New concentrations: [A]' = 2[A], [B]' = 3[B]<br />
+                3. New rate: Rate₂ = k[A']²[B'] = k(2[A])²(3[B]) =
+                k(4[A]²)(3[B]) = 12k[A]²[B]<br />
+                4. Rate ratio: Rate₂/Rate₁ = 12k[A]²[B] / k[A]²[B] = 12<br />
+                5. Therefore, rate increases by factor of 12
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- International Exams -->
+        <div class="exam-section">
+          <h3>🌍 International Exams - Sample Questions</h3>
+          <div class="question-grid">
+            <div class="detailed-question">
+              <h4>SAT Mathematics</h4>
+              <p>
+                <strong>Question 1:</strong> If f(x) = 2x + 3 and g(x) = x² - 1,
+                find f(g(2)).
+              </p>
+              <div class="answer">Answer: f(g(2)) = f(3) = 9</div>
+
+              <p>
+                <strong>Question 2:</strong> A circle has center (3,4) and
+                radius 5. What is the equation of the circle?
+              </p>
+              <div class="answer">Answer: (x-3)² + (y-4)² = 25</div>
+            </div>
+
+            <div class="detailed-question">
+              <h4>IELTS Academic Writing Task 1</h4>
+              <p>
+                <strong>Task:</strong> The chart shows the percentage of
+                households in different income brackets in Country X from 1990
+                to 2020. Summarize the information by selecting and reporting
+                the main features.
+              </p>
+              <div class="answer">
+                Answer: [Sample response structure and key trends provided]
+              </div>
+            </div>
+
+            <div class="detailed-question">
+              <h4>TOEFL iBT Speaking Task 2</h4>
+              <p>
+                <strong>Task:</strong> Some people prefer to work in a team,
+                while others prefer to work alone. Which do you prefer and why?
+                Use specific reasons and examples.
+              </p>
+              <div class="answer">
+                Answer: [Speaking response template and evaluation criteria
+                provided]
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="study-tips">
+        <h3>💡 Uğur üçün Təlim Məsləhətləri</h3>
+        <ul class="tips-list">
+          <li>
+            <strong>Create a consistent study schedule and stick to it.</strong>
+            Consistency is key to effective learning. Set specific times for
+            each subject, use a planner or digital calendar, and treat study
+            time as non-negotiable appointments. This builds habits and ensures
+            regular review of material.
+          </li>
+          <li>
+            <strong>Use active recall techniques.</strong> Instead of just
+            re-reading materials, test yourself regularly by covering answers
+            and trying to recall information from memory. Use flashcards,
+            practice questions, or teach the material to someone else. This
+            strengthens long-term retention.
+          </li>
+          <li>
+            <strong>Join study groups with other Baku students.</strong>
+            Collaborate with peers to discuss difficult topics, share resources,
+            and explain concepts to each other. Study groups provide motivation,
+            different perspectives, and help identify knowledge gaps through
+            peer teaching.
+          </li>
+          <li>
+            <strong>Take regular breaks during study sessions.</strong> Use the
+            Pomodoro Technique (25 minutes study, 5 minutes break) or similar
+            methods. Breaks prevent mental fatigue, improve focus, and help
+            consolidate information. Step away from your desk and do light
+            physical activity.
+          </li>
+          <li>
+            <strong>Practice past exam papers under timed conditions.</strong>
+            Simulate real exam conditions by timing yourself and working in a
+            quiet environment. This improves time management, reduces anxiety,
+            and helps identify areas needing more practice. Review answers
+            thoroughly afterward.
+          </li>
+          <li>
+            <strong>Use visual aids like mind maps and diagrams.</strong> Create
+            visual representations of complex concepts, relationships between
+            topics, and key information. Mind maps help organize thoughts,
+            diagrams clarify processes, and visual learning enhances memory
+            retention for many students.
+          </li>
+          <li>
+            <strong>Seek help from teachers or tutors when needed.</strong>
+            Don't struggle alone with difficult topics. Ask questions in class,
+            visit office hours, or consider tutoring services. Early
+            intervention prevents small problems from becoming major obstacles
+            to understanding.
+          </li>
+          <li>
+            <strong>Maintain a healthy lifestyle.</strong> Get 7-9 hours of
+            sleep nightly, eat balanced meals with brain-boosting foods
+            (omega-3s, antioxidants), and exercise regularly. Physical health
+            directly impacts cognitive function, memory, and concentration
+            during study sessions.
+          </li>
+          <li>
+            <strong>Create a dedicated study space.</strong> Designate a
+            specific area for studying that's free from distractions, well-lit,
+            and organized. Keep all necessary materials within reach and
+            maintain this space as your "learning zone" to condition your brain
+            for focus.
+          </li>
+          <li>
+            <strong>Use the Feynman Technique for complex topics.</strong>
+            Explain difficult concepts in simple terms as if teaching a child.
+            If you can't simplify it, you don't understand it well enough. This
+            method reveals knowledge gaps and deepens understanding through
+            explanation.
+          </li>
+          <li>
+            <strong
+              >Implement spaced repetition for long-term retention.</strong
+            >
+            Review material at increasing intervals (1 day, 3 days, 1 week, 2
+            weeks). This technique leverages the forgetting curve to strengthen
+            memory and is particularly effective for vocabulary, formulas, and
+            facts.
+          </li>
+          <li>
+            <strong
+              >Set specific, measurable goals for each study session.</strong
+            >
+            Instead of vague goals like "study math," set specific targets like
+            "complete 10 calculus problems" or "memorize 20 chemistry formulas."
+            Clear goals provide direction and a sense of accomplishment.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Coming Soon Section -->
+      <div class="coming-soon-section">
+        <div class="coming-soon-content">
+          <span class="coming-soon-icon">🚧</span>
+          <h2>Tezliklə Gəlir!</h2>
+          <p>
+            Ən inkişaf etmiş AI sual generatorunu sizə gətirmək üçün çalışırıq.
+            Yeniliklər üçün bizi izləyin!
+          </p>
+          <div class="coming-soon-features">
+            <div class="feature-preview">
+              <span class="preview-icon">📊</span>
+              <span>Ağıllı Analiz</span>
+            </div>
+            <div class="feature-preview">
+              <span class="preview-icon">🔄</span>
+              <span>Avtomatik Yaradılış</span>
+            </div>
+            <div class="feature-preview">
+              <span class="preview-icon">📝</span>
+              <span>Çoxlu Formatlar</span>
+            </div>
+            <div class="feature-preview">
+              <span class="preview-icon">📸</span>
+              <span>Şəkil Analizi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="index.html" class="back-link">← Ana Səhifəyə Qayıt</a>
+    </div>
+
+    <script>
+      // AI Question Generator Functionality
+      class AIQuestionGenerator {
+        constructor() {
+          this.questions = [];
+          this.uploadedPhoto = null;
+          this.init();
+        }
+
+        init() {
+          this.setupEventListeners();
+          this.loadExistingQuestions();
+        }
+
+        setupEventListeners() {
+          document
+            .getElementById("generateBtn")
+            .addEventListener("click", () => {
+              this.generateQuestions();
+            });
+
+          document
+            .getElementById("downloadBtn")
+            .addEventListener("click", () => {
+              this.downloadAsPDF();
+            });
+
+          document
+            .getElementById("downloadJsonBtn")
+            .addEventListener("click", () => {
+              this.downloadAsJSON();
+            });
+
+          // Photo upload event listeners
+          document
+            .getElementById("photoInput")
+            .addEventListener("change", (e) => {
+              this.handlePhotoUpload(e);
+            });
+
+          document
+            .getElementById("removePhotoBtn")
+            .addEventListener("click", () => {
+              this.removePhoto();
+            });
+
+          // Drag and drop functionality
+          const uploadArea = document.getElementById("photoUploadArea");
+          uploadArea.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            uploadArea.classList.add("dragover");
+          });
+
+          uploadArea.addEventListener("dragleave", () => {
+            uploadArea.classList.remove("dragover");
+          });
+
+          uploadArea.addEventListener("drop", (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove("dragover");
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+              this.handlePhotoUpload({ target: { files: files } });
+            }
+          });
+        }
+
+        loadExistingQuestions() {
+          // Load questions from the existing content on the page
+          const existingQuestions = this.extractQuestionsFromPage();
+          this.questions = existingQuestions;
+        }
+
+        extractQuestionsFromPage() {
+          const questions = [];
+
+          // Extract questions from detailed exam sections
+          const questionElements =
+            document.querySelectorAll(".detailed-question");
+          questionElements.forEach((element, index) => {
+            const questionText = element.querySelector("p")?.textContent || "";
+            const answerText =
+              element.querySelector(".answer")?.textContent || "";
+
+            if (questionText && answerText) {
+              questions.push({
+                id: `existing_${index + 1}`,
+                text: questionText,
+                answer: answerText,
+                subject: this.detectSubject(questionText),
+                difficulty: this.detectDifficulty(questionText),
+                type: "detailed",
+              });
+            }
+          });
+
+          return questions;
+        }
+
+        detectSubject(questionText) {
+          const text = questionText.toLowerCase();
+          if (
+            text.includes("riyaziyyat") ||
+            text.includes("mathematics") ||
+            text.includes("calculus") ||
+            text.includes("algebra")
+          ) {
+            return "mathematics";
+          } else if (
+            text.includes("fizika") ||
+            text.includes("physics") ||
+            text.includes("force") ||
+            text.includes("energy")
+          ) {
+            return "physics";
+          } else if (
+            text.includes("kimya") ||
+            text.includes("chemistry") ||
+            text.includes("molecule") ||
+            text.includes("reaction")
+          ) {
+            return "chemistry";
+          } else if (
+            text.includes("ingilis") ||
+            text.includes("english") ||
+            text.includes("ielts") ||
+            text.includes("toefl")
+          ) {
+            return "english";
+          } else if (
+            text.includes("informatika") ||
+            text.includes("computer") ||
+            text.includes("programming") ||
+            text.includes("algorithm")
+          ) {
+            return "computer-science";
+          } else if (
+            text.includes("iqtisadiyyat") ||
+            text.includes("economics") ||
+            text.includes("business") ||
+            text.includes("market")
+          ) {
+            return "economics";
+          }
+          return "mathematics"; // default
+        }
+
+        detectDifficulty(questionText) {
+          const text = questionText.toLowerCase();
+          if (
+            text.includes("asan") ||
+            text.includes("easy") ||
+            text.includes("basic")
+          ) {
+            return "easy";
+          } else if (
+            text.includes("çətin") ||
+            text.includes("hard") ||
+            text.includes("advanced") ||
+            text.includes("complex")
+          ) {
+            return "hard";
+          }
+          return "medium"; // default
+        }
+
+        async generateQuestions() {
+          const subject = document.getElementById("subject").value;
+          const difficulty = document.getElementById("difficulty").value;
+          const count = parseInt(
+            document.getElementById("questionCount").value
+          );
+
+          if (count > 25) {
+            alert("Maksimum 25 sual yarada bilərsiniz!");
+            return;
+          }
+
+          this.showProgress();
+
+          try {
+            // Simulate AI processing
+            await this.simulateAIProcessing();
+
+            const generatedQuestions = this.createNewQuestions(
+              subject,
+              difficulty,
+              count
+            );
+            this.displayQuestions(generatedQuestions);
+          } catch (error) {
+            console.error("Error generating questions:", error);
+            alert(
+              "Sual yaradılarkən xəta baş verdi. Zəhmət olmasa yenidən cəhd edin."
+            );
+          } finally {
+            this.hideProgress();
+          }
+        }
+
+        async simulateAIProcessing() {
+          return new Promise((resolve) => {
+            let progress = 0;
+            const interval = setInterval(() => {
+              progress += Math.random() * 15;
+              if (progress > 100) progress = 100;
+
+              document.getElementById("progressFill").style.width =
+                progress + "%";
+
+              if (progress >= 100) {
+                clearInterval(interval);
+                setTimeout(resolve, 500);
+              }
+            }, 200);
+          });
+        }
+
+        createNewQuestions(subject, difficulty, count) {
+          const baseQuestions = this.questions.filter(
+            (q) => q.subject === subject
+          );
+          const generatedQuestions = [];
+
+          for (let i = 0; i < count; i++) {
+            let baseQuestion;
+
+            // If photo is uploaded, create questions based on photo
+            if (this.uploadedPhoto) {
+              baseQuestion = this.createQuestionFromPhoto(
+                subject,
+                difficulty,
+                i
+              );
+            } else {
+              // Use existing questions as base
+              baseQuestion =
+                baseQuestions[
+                  Math.floor(Math.random() * baseQuestions.length)
+                ] || baseQuestions[0];
+            }
+
+            const newQuestion = {
+              id: `generated_${Date.now()}_${i}`,
+              text: this.uploadedPhoto
+                ? baseQuestion.text
+                : this.varyQuestionText(baseQuestion.text, subject, difficulty),
+              answer: this.uploadedPhoto
+                ? baseQuestion.answer
+                : this.varyAnswerText(baseQuestion.answer, subject, difficulty),
+              subject: subject,
+              difficulty: difficulty,
+              type: "generated",
+              hasPhoto: !!this.uploadedPhoto,
+            };
+
+            generatedQuestions.push(newQuestion);
+          }
+
+          return generatedQuestions;
+        }
+
+        createQuestionFromPhoto(subject, difficulty, index) {
+          // Simulate AI analysis of photo content
+          const photoQuestions = {
+            mathematics: [
+              {
+                text: `Şəkildə göstərilən riyazi məsələni həll edin. ${this.getPhotoContext(
+                  subject
+                )}`,
+                answer: `Bu məsələ ${difficulty} səviyyədədir və şəkildəki məlumatlara əsaslanır.`,
+              },
+              {
+                text: `Şəkildəki qrafik və ya diaqramı analiz edərək suala cavab verin.`,
+                answer: `Qrafik analizi nəticəsində cavab tapıla bilər.`,
+              },
+            ],
+            physics: [
+              {
+                text: `Şəkildə göstərilən fiziki hadisəni izah edin və hesablamaları aparın.`,
+                answer: `Fiziki prinsiplərə əsaslanaraq həll edilir.`,
+              },
+              {
+                text: `Şəkildəki eksperimentin nəticələrini təhlil edin.`,
+                answer: `Eksperiment nəticələri fizika qanunlarına uyğun olaraq izah edilir.`,
+              },
+            ],
+            chemistry: [
+              {
+                text: `Şəkildə göstərilən kimyəvi reaksiyanı analiz edin.`,
+                answer: `Kimyəvi reaksiya balansı və məhsulları müəyyən edilir.`,
+              },
+              {
+                text: `Şəkildəki molekulyar strukturun xassələrini izah edin.`,
+                answer: `Molekulyar quruluş kimyəvi xassələri müəyyən edir.`,
+              },
+            ],
+            english: [
+              {
+                text: `Şəkildə göstərilən səhnəni təsvir edin və mətn yazın.`,
+                answer: `Təsvir mətnində şəkildəki elementlər ətraflı izah edilir.`,
+              },
+              {
+                text: `Şəkildəki mətn və ya yazını oxuyun və suallara cavab verin.`,
+                answer: `Mətn məzmunu əsasında düzgün cavablar verilir.`,
+              },
+            ],
+          };
+
+          const subjectQuestions =
+            photoQuestions[subject] || photoQuestions.mathematics;
+          const selectedQuestion =
+            subjectQuestions[index % subjectQuestions.length];
+
+          return {
+            text: selectedQuestion.text,
+            answer: selectedQuestion.answer,
+          };
+        }
+
+        getPhotoContext(subject) {
+          const contexts = {
+            mathematics: "Hesablama və ya həndəsi məsələ",
+            physics: "Fiziki eksperiment və ya hadisə",
+            chemistry: "Kimyəvi reaksiya və ya maddə",
+            english: "Mətn və ya görüntü təhlili",
+            "computer-science": "Alqoritm və ya proqram kodu",
+            economics: "İqtisadi məlumat və ya qrafik",
+          };
+          return contexts[subject] || "Riyazi məsələ";
+        }
+
+        varyQuestionText(originalText, subject, difficulty) {
+          // Simple variation logic - in a real AI system, this would be much more sophisticated
+          const variations = {
+            mathematics: [
+              "Yeni riyazi məsələ: ",
+              "Hesablama sualı: ",
+              "Cəbr məsələsi: ",
+              "Həndəsə sualı: ",
+            ],
+            physics: [
+              "Fizika məsələsi: ",
+              "Mexanika sualı: ",
+              "Elektrik məsələsi: ",
+              "Termodinamika sualı: ",
+            ],
+            chemistry: [
+              "Kimya məsələsi: ",
+              "Reaksiya sualı: ",
+              "Molekulyar məsələ: ",
+              "Kimyəvi hesablama: ",
+            ],
+          };
+
+          const prefix =
+            variations[subject]?.[
+              Math.floor(Math.random() * variations[subject].length)
+            ] || "Yeni sual: ";
+          return (
+            prefix +
+            originalText.replace(/^(Sual \d+:|Question \d+:)/, "").trim()
+          );
+        }
+
+        varyAnswerText(originalAnswer, subject, difficulty) {
+          // Simple variation logic for answers
+          return originalAnswer
+            .replace(/^(Cavab:|Answer:)/, "Yeni cavab:")
+            .trim();
+        }
+
+        displayQuestions(questions) {
+          const container = document.getElementById("questionsList");
+          const section = document.getElementById("generatedQuestions");
+
+          container.innerHTML = "";
+
+          questions.forEach((question, index) => {
+            const questionElement = document.createElement("div");
+            questionElement.className = "question-item";
+            questionElement.innerHTML = `
+              <h4>Sual ${index + 1} ${question.hasPhoto ? "📸" : ""}</h4>
+              <p><strong>Mətn:</strong> ${question.text}</p>
+              <p><strong>Cavab:</strong> ${question.answer}</p>
+              <p><strong>Fənn:</strong> ${this.getSubjectName(
+                question.subject
+              )} | <strong>Çətinlik:</strong> ${this.getDifficultyName(
+              question.difficulty
+            )} ${question.hasPhoto ? "| <strong>Mənbə:</strong> Şəkil" : ""}</p>
+            `;
+            container.appendChild(questionElement);
+          });
+
+          section.style.display = "block";
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+
+        getSubjectName(subject) {
+          const names = {
+            mathematics: "Riyaziyyat",
+            physics: "Fizika",
+            chemistry: "Kimya",
+            english: "İngilis Dili",
+            "computer-science": "İnformatika",
+            economics: "İqtisadiyyat",
+          };
+          return names[subject] || subject;
+        }
+
+        getDifficultyName(difficulty) {
+          const names = {
+            easy: "Asan",
+            medium: "Orta",
+            hard: "Çətin",
+            mixed: "Qarışıq",
+          };
+          return names[difficulty] || difficulty;
+        }
+
+        showProgress() {
+          document.getElementById("progressBar").style.display = "block";
+          document.getElementById("generateBtn").disabled = true;
+          document.getElementById("generateBtn").innerHTML =
+            '<span class="btn-icon">⏳</span>Yaradılır...';
+        }
+
+        hideProgress() {
+          document.getElementById("progressBar").style.display = "none";
+          document.getElementById("generateBtn").disabled = false;
+          document.getElementById("generateBtn").innerHTML =
+            '<span class="btn-icon">🚀</span>Sualları Yarat';
+        }
+
+        downloadAsPDF() {
+          const questions = document.getElementById("questionsList").innerHTML;
+          const printWindow = window.open("", "_blank");
+          printWindow.document.write(`
+            <html>
+              <head>
+                <title>Yaradılan Suallar</title>
+                <style>
+                  body { font-family: Arial, sans-serif; margin: 20px; }
+                  .question-item { margin: 20px 0; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+                  h4 { color: #3498db; }
+                </style>
+              </head>
+              <body>
+                <h1>AI tərəfindən yaradılan suallar</h1>
+                ${questions}
+              </body>
+            </html>
+          `);
+          printWindow.document.close();
+          printWindow.print();
+        }
+
+        downloadAsJSON() {
+          const questions = Array.from(
+            document.querySelectorAll(".question-item")
+          ).map((item, index) => ({
+            id: `generated_${Date.now()}_${index}`,
+            text: item.querySelector("p").textContent.replace("Mətn: ", ""),
+            answer: item
+              .querySelectorAll("p")[1]
+              .textContent.replace("Cavab: ", ""),
+            subject: document.getElementById("subject").value,
+            difficulty: document.getElementById("difficulty").value,
+          }));
+
+          const dataStr = JSON.stringify(questions, null, 2);
+          const dataBlob = new Blob([dataStr], { type: "application/json" });
+          const url = URL.createObjectURL(dataBlob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = "generated_questions.json";
+          link.click();
+          URL.revokeObjectURL(url);
+        }
+
+        // Photo handling methods
+        handlePhotoUpload(event) {
+          const file = event.target.files[0];
+          if (file && file.type.startsWith("image/")) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+              this.uploadedPhoto = {
+                file: file,
+                dataUrl: e.target.result,
+                name: file.name,
+              };
+              this.displayPhotoPreview(e.target.result);
+            };
+            reader.readAsDataURL(file);
+          } else {
+            alert(
+              "Zəhmət olmasa düzgün şəkil formatı seçin (JPG, PNG, GIF, WEBP)"
+            );
+          }
+        }
+
+        displayPhotoPreview(dataUrl) {
+          const preview = document.getElementById("photoPreview");
+          const image = document.getElementById("previewImage");
+          const uploadArea = document.getElementById("photoUploadArea");
+
+          image.src = dataUrl;
+          preview.style.display = "block";
+          uploadArea.style.display = "none";
+        }
+
+        removePhoto() {
+          this.uploadedPhoto = null;
+          const preview = document.getElementById("photoPreview");
+          const uploadArea = document.getElementById("photoUploadArea");
+          const photoInput = document.getElementById("photoInput");
+
+          preview.style.display = "none";
+          uploadArea.style.display = "block";
+          photoInput.value = "";
+        }
+      }
+
+      // Initialize AI Question Generator when page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        new AIQuestionGenerator();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up/Login - DIM Exams</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <style>
+      .email-checker-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+      }
+
+      .email-checker-container h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+        font-size: 2.5em;
+      }
+
+      .user-status {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .user-status.logged-in {
+        background: linear-gradient(45deg, #11998e, #38ef7d);
+      }
+
+      .user-status.not-logged-in {
+        background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+      }
+
+      .auth-section {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        border-left: 4px solid #007bff;
+      }
+
+      .auth-tabs {
+        display: flex;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .auth-tab {
+        flex: 1;
+        padding: 12px;
+        background: #e9ecef;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .auth-tab.active {
+        background: #007bff;
+        color: white;
+      }
+
+      .auth-tab:hover {
+        background: #0056b3;
+        color: white;
+      }
+
+      .auth-form {
+        display: none;
+      }
+
+      .auth-form.active {
+        display: block;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: border-color 0.3s ease;
+        box-sizing: border-box;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: #007bff;
+      }
+
+      .auth-button {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(45deg, #007bff, #0056b3);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .auth-button:hover {
+        background: linear-gradient(45deg, #0056b3, #004085);
+        transform: translateY(-2px);
+      }
+
+      .user-dashboard {
+        background: #e8f5e8;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        border-left: 4px solid #28a745;
+      }
+
+      .user-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+
+      .info-item {
+        background: white;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+      }
+
+      .info-label {
+        font-weight: bold;
+        color: #666;
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+
+      .info-value {
+        color: #333;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+
+      .logout-button {
+        background: linear-gradient(45deg, #dc3545, #c82333);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .logout-button:hover {
+        background: linear-gradient(45deg, #c82333, #a71e2a);
+        transform: translateY(-2px);
+      }
+
+      .message {
+        padding: 10px;
+        border-radius: 6px;
+        margin-bottom: 15px;
+        font-weight: bold;
+        display: none;
+      }
+
+      .message.success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+
+      .message.error {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+      .input-group {
+        margin-bottom: 20px;
+      }
+
+      .input-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #555;
+      }
+
+      .email-input {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+      }
+
+      .email-input:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+      }
+
+      .email-input.valid {
+        border-color: #28a745;
+        background-color: #f8fff9;
+      }
+
+      .email-input.invalid {
+        border-color: #dc3545;
+        background-color: #fff8f8;
+      }
+
+      .validation-message {
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        display: none;
+      }
+
+      .validation-message.valid {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+
+      .validation-message.invalid {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+      .check-button {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(45deg, #007bff, #0056b3);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .check-button:hover {
+        background: linear-gradient(45deg, #0056b3, #004085);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+      }
+
+      .check-button:active {
+        transform: translateY(0);
+      }
+
+      .examples {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        border-left: 4px solid #007bff;
+      }
+
+      .examples h3 {
+        margin-top: 0;
+        color: #333;
+      }
+
+      .example-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      .example-item {
+        padding: 8px 12px;
+        background: #2c3e50;
+        color: #ecf0f1;
+        border-radius: 5px;
+        font-family: monospace;
+        font-size: 14px;
+        border: 1px solid #34495e;
+        font-weight: 500;
+      }
+
+      .example-item.valid {
+        border-left: 4px solid #27ae60;
+        background: #1e3a1e;
+        color: #2ecc71;
+      }
+
+      .example-item.invalid {
+        border-left: 4px solid #e74c3c;
+        background: #3a1e1e;
+        color: #e67e22;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .email-checker-container {
+          margin: 20px;
+          padding: 20px;
+        }
+
+        .example-list {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email-checker-container">
+      <h1>🔐 Sign Up/Login</h1>
+
+      <!-- User Status Display -->
+      <div id="userStatus" class="user-status not-logged-in">Not logged in</div>
+
+      <!-- User Dashboard (shown when logged in) -->
+      <div id="userDashboard" class="user-dashboard" style="display: none">
+        <h3>👤 Welcome back!</h3>
+        <div class="user-info">
+          <div class="info-item">
+            <div class="info-label">Email</div>
+            <div class="info-value" id="userEmail">-</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Name</div>
+            <div class="info-value" id="userName">-</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Member Since</div>
+            <div class="info-value" id="memberSince">-</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Last Login</div>
+            <div class="info-value" id="lastLogin">-</div>
+          </div>
+        </div>
+        <button id="logoutButton" class="logout-button">Logout</button>
+      </div>
+
+      <!-- Authentication Section (shown when not logged in) -->
+      <div id="authSection" class="auth-section">
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-tab="login">Login</button>
+          <button class="auth-tab" data-tab="signup">Sign Up</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="auth-form active">
+          <div class="form-group">
+            <label for="loginEmail">Email:</label>
+            <input
+              type="email"
+              id="loginEmail"
+              class="form-input"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password:</label>
+            <input
+              type="password"
+              id="loginPassword"
+              class="form-input"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <button type="submit" class="auth-button">Login</button>
+        </form>
+
+        <!-- Signup Form -->
+        <form id="signupForm" class="auth-form">
+          <div class="form-group">
+            <label for="signupName">Full Name:</label>
+            <input
+              type="text"
+              id="signupName"
+              class="form-input"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="signupEmail">Email:</label>
+            <input
+              type="email"
+              id="signupEmail"
+              class="form-input"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="signupPassword">Password:</label>
+            <input
+              type="password"
+              id="signupPassword"
+              class="form-input"
+              placeholder="Create a password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              class="form-input"
+              placeholder="Confirm your password"
+              required
+            />
+          </div>
+          <button type="submit" class="auth-button">Sign Up</button>
+        </form>
+
+        <div id="authMessage" class="message"></div>
+      </div>
+
+      <!-- Email Validation Section -->
+      <div class="input-group">
+        <label for="emailInput">Enter email address to validate:</label>
+        <input
+          type="text"
+          id="emailInput"
+          class="email-input"
+          placeholder="example@domain.com"
+          autocomplete="email"
+        />
+        <div id="validationMessage" class="validation-message"></div>
+      </div>
+
+      <button id="checkButton" class="check-button">
+        Check Email Validity
+      </button>
+
+      <div class="examples">
+        <h3>Email Format Examples:</h3>
+        <div class="example-list">
+          <div class="example-item valid">✓ user@example.com</div>
+          <div class="example-item valid">✓ test.email@domain.co.uk</div>
+          <div class="example-item valid">✓ user+tag@example.org</div>
+          <div class="example-item valid">✓ firstname.lastname@company.com</div>
+          <div class="example-item invalid">✗ invalid.email</div>
+          <div class="example-item invalid">✗ @domain.com</div>
+          <div class="example-item invalid">✗ user@</div>
+          <div class="example-item invalid">✗ user..double.dot@example.com</div>
+        </div>
+      </div>
+
+      <a href="../index.html" class="back-link">← Back to Home</a>
+    </div>
+
+    <script>
+      class UserAuthSystem {
+        constructor() {
+          this.currentUser = null;
+          this.users = JSON.parse(localStorage.getItem("users")) || [];
+          this.currentUserData =
+            JSON.parse(localStorage.getItem("currentUser")) || null;
+
+          this.init();
+        }
+
+        init() {
+          this.setupEventListeners();
+          this.checkLoginStatus();
+        }
+
+        setupEventListeners() {
+          // Tab switching
+          document.querySelectorAll(".auth-tab").forEach((tab) => {
+            tab.addEventListener("click", (e) => {
+              this.switchTab(e.target.dataset.tab);
+            });
+          });
+
+          // Form submissions
+          document
+            .getElementById("loginForm")
+            .addEventListener("submit", (e) => {
+              e.preventDefault();
+              this.handleLogin();
+            });
+
+          document
+            .getElementById("signupForm")
+            .addEventListener("submit", (e) => {
+              e.preventDefault();
+              this.handleSignup();
+            });
+
+          // Logout
+          document
+            .getElementById("logoutButton")
+            .addEventListener("click", () => {
+              this.handleLogout();
+            });
+        }
+
+        switchTab(tabName) {
+          // Update tab buttons
+          document.querySelectorAll(".auth-tab").forEach((tab) => {
+            tab.classList.remove("active");
+          });
+          document
+            .querySelector(`[data-tab="${tabName}"]`)
+            .classList.add("active");
+
+          // Update forms
+          document.querySelectorAll(".auth-form").forEach((form) => {
+            form.classList.remove("active");
+          });
+          document.getElementById(`${tabName}Form`).classList.add("active");
+
+          // Clear messages
+          this.clearMessage();
+        }
+
+        handleSignup() {
+          const name = document.getElementById("signupName").value.trim();
+          const email = document.getElementById("signupEmail").value.trim();
+          const password = document.getElementById("signupPassword").value;
+          const confirmPassword =
+            document.getElementById("confirmPassword").value;
+
+          // Validation
+          if (!name || !email || !password || !confirmPassword) {
+            this.showMessage("Please fill in all fields", "error");
+            return;
+          }
+
+          if (!this.isValidEmail(email)) {
+            this.showMessage("Please enter a valid email address", "error");
+            return;
+          }
+
+          if (password.length < 6) {
+            this.showMessage(
+              "Password must be at least 6 characters long",
+              "error"
+            );
+            return;
+          }
+
+          if (password !== confirmPassword) {
+            this.showMessage("Passwords do not match", "error");
+            return;
+          }
+
+          // Check if user already exists
+          if (this.users.find((user) => user.email === email)) {
+            this.showMessage(
+              "An account with this email already exists",
+              "error"
+            );
+            return;
+          }
+
+          // Create new user
+          const newUser = {
+            id: Date.now(),
+            name,
+            email,
+            password: btoa(password), // Simple encoding (not secure for production)
+            createdAt: new Date().toISOString(),
+            lastLogin: null,
+          };
+
+          this.users.push(newUser);
+          localStorage.setItem("users", JSON.stringify(this.users));
+
+          this.showMessage(
+            "Account created successfully! Please login.",
+            "success"
+          );
+          this.switchTab("login");
+          this.clearForm("signupForm");
+        }
+
+        handleLogin() {
+          const email = document.getElementById("loginEmail").value.trim();
+          const password = document.getElementById("loginPassword").value;
+
+          if (!email || !password) {
+            this.showMessage("Please fill in all fields", "error");
+            return;
+          }
+
+          const user = this.users.find(
+            (u) => u.email === email && u.password === btoa(password)
+          );
+
+          if (user) {
+            // Update last login
+            user.lastLogin = new Date().toISOString();
+            localStorage.setItem("users", JSON.stringify(this.users));
+
+            // Set current user
+            this.currentUser = user;
+            localStorage.setItem("currentUser", JSON.stringify(user));
+
+            this.showMessage("Login successful!", "success");
+            this.updateUI();
+            this.clearForm("loginForm");
+          } else {
+            this.showMessage("Invalid email or password", "error");
+          }
+        }
+
+        handleLogout() {
+          this.currentUser = null;
+          localStorage.removeItem("currentUser");
+          this.updateUI();
+          this.showMessage("Logged out successfully", "success");
+        }
+
+        checkLoginStatus() {
+          if (this.currentUserData) {
+            this.currentUser = this.currentUserData;
+            this.updateUI();
+          }
+        }
+
+        updateUI() {
+          const userStatus = document.getElementById("userStatus");
+          const userDashboard = document.getElementById("userDashboard");
+          const authSection = document.getElementById("authSection");
+
+          if (this.currentUser) {
+            // User is logged in
+            userStatus.textContent = `Welcome, ${this.currentUser.name}!`;
+            userStatus.className = "user-status logged-in";
+
+            userDashboard.style.display = "block";
+            authSection.style.display = "none";
+
+            // Update user info
+            document.getElementById("userEmail").textContent =
+              this.currentUser.email;
+            document.getElementById("userName").textContent =
+              this.currentUser.name;
+            document.getElementById("memberSince").textContent = new Date(
+              this.currentUser.createdAt
+            ).toLocaleDateString();
+            document.getElementById("lastLogin").textContent = this.currentUser
+              .lastLogin
+              ? new Date(this.currentUser.lastLogin).toLocaleDateString()
+              : "First time login";
+          } else {
+            // User is not logged in
+            userStatus.textContent = "Not logged in";
+            userStatus.className = "user-status not-logged-in";
+
+            userDashboard.style.display = "none";
+            authSection.style.display = "block";
+          }
+        }
+
+        showMessage(text, type) {
+          const messageEl = document.getElementById("authMessage");
+          messageEl.textContent = text;
+          messageEl.className = `message ${type}`;
+          messageEl.style.display = "block";
+
+          setTimeout(() => {
+            this.clearMessage();
+          }, 5000);
+        }
+
+        clearMessage() {
+          const messageEl = document.getElementById("authMessage");
+          messageEl.style.display = "none";
+          messageEl.textContent = "";
+        }
+
+        clearForm(formId) {
+          document.getElementById(formId).reset();
+        }
+
+        isValidEmail(email) {
+          const emailRegex =
+            /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+          return emailRegex.test(email) && !email.includes("..");
+        }
+      }
+
+      class EmailChecker {
+        constructor() {
+          this.emailInput = document.getElementById("emailInput");
+          this.checkButton = document.getElementById("checkButton");
+          this.validationMessage = document.getElementById("validationMessage");
+
+          this.init();
+        }
+
+        init() {
+          // Real-time validation as user types
+          this.emailInput.addEventListener("input", () => {
+            this.validateEmail();
+          });
+
+          // Button click validation
+          this.checkButton.addEventListener("click", () => {
+            this.validateEmail();
+          });
+
+          // Enter key validation
+          this.emailInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+              this.validateEmail();
+            }
+          });
+        }
+
+        validateEmail() {
+          const email = this.emailInput.value.trim();
+
+          if (!email) {
+            this.clearValidation();
+            return;
+          }
+
+          const isValid = this.isValidEmail(email);
+          this.displayValidation(isValid, email);
+        }
+
+        isValidEmail(email) {
+          // Comprehensive email validation regex
+          const emailRegex =
+            /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+          // Additional checks for common issues
+          if (!emailRegex.test(email)) {
+            return false;
+          }
+
+          // Check for consecutive dots
+          if (email.includes("..")) {
+            return false;
+          }
+
+          // Check for valid domain structure
+          const parts = email.split("@");
+          if (parts.length !== 2) {
+            return false;
+          }
+
+          const [localPart, domain] = parts;
+
+          // Local part validation
+          if (localPart.length === 0 || localPart.length > 64) {
+            return false;
+          }
+
+          // Domain validation
+          if (domain.length === 0 || domain.length > 255) {
+            return false;
+          }
+
+          // Check for valid TLD (at least 2 characters)
+          const domainParts = domain.split(".");
+          if (domainParts.length < 2) {
+            return false;
+          }
+
+          const tld = domainParts[domainParts.length - 1];
+          if (tld.length < 2 || !/^[a-zA-Z]+$/.test(tld)) {
+            return false;
+          }
+
+          // Check for valid characters in domain
+          if (!/^[a-zA-Z0-9.-]+$/.test(domain)) {
+            return false;
+          }
+
+          // Check that domain doesn't start or end with dot or hyphen
+          if (
+            domain.startsWith(".") ||
+            domain.endsWith(".") ||
+            domain.startsWith("-") ||
+            domain.endsWith("-")
+          ) {
+            return false;
+          }
+
+          return true;
+        }
+
+        displayValidation(isValid, email) {
+          this.emailInput.classList.remove("valid", "invalid");
+          this.validationMessage.classList.remove("valid", "invalid");
+          this.validationMessage.style.display = "none";
+
+          if (isValid) {
+            this.emailInput.classList.add("valid");
+            this.validationMessage.classList.add("valid");
+            this.validationMessage.textContent = `✅ "${email}" is a valid email address!`;
+            this.validationMessage.style.display = "block";
+          } else {
+            this.emailInput.classList.add("invalid");
+            this.validationMessage.classList.add("invalid");
+            this.validationMessage.textContent = `❌ "${email}" is not a valid email address. Please check the format.`;
+            this.validationMessage.style.display = "block";
+          }
+        }
+
+        clearValidation() {
+          this.emailInput.classList.remove("valid", "invalid");
+          this.validationMessage.classList.remove("valid", "invalid");
+          this.validationMessage.style.display = "none";
+        }
+      }
+
+      // Initialize both systems when the page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        new UserAuthSystem();
+        new EmailChecker();
+      });
+    </script>
+  </body>
+</html>
